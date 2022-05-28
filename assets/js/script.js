@@ -1,11 +1,3 @@
-var schedule = document.querySelector("#schedule");
-
-
-
-var test1 = document.getElementById("10am")
-console.log(test1)
-
-
 // Displays current date on the page
 let currentDate = moment().format('MMMM Do YYYY');
 $("#currentDay").text(currentDate);
@@ -16,81 +8,51 @@ let curentTime = moment().format("HH");
 // Properties of the time blocks used within the day scheduler
 let timeBlocks = [
     {
-        order: 0,
-        hour: 9,
-        amPm: "am",
-        time: "09",
-        note: ""
-    },
-    {
-        order: 1,
-        hour: 10,
-        amPm: "am",
         time: "10",
-        note: "" 
+        id: "10am"
     },
     {
-        order: 2,
-        hour: 11,
-        amPm: "am",
         time: "11",
-        note: "" 
+        id: "11am"
     },
     {
-        order: 3,
-        hour: 12,
-        amPm: "pm",
         time: "12",
-        note: "" 
+        id: "12pm" 
     },
     {
-        order: 4,
-        hour: 1,
-        amPm: "pm",
         time: "13",
-        note: "" 
+        id: "1pm"
     },
     {
-        order: 5,
-        hour: 2,
-        amPm: "pm",
         time: "14",
-        note: "" 
+        id: "2pm"
     },
     {
-        order: 6,
-        hour: 3,
-        amPm: "pm",
         time: "15",
-        note: "" 
+        id: "3pm"
     },
     {
-        order: 7,
-        hour: 4,
-        amPm: "pm",
         time: "16",
-        note: "" 
+        id: "4pm" 
     },
     {
-        order: 8,
-        hour: 5,
-        amPm: "pm",
         time: "24",
-        note: "" 
+        id: "5pm"
     },
-
 ];
 
 $(".saveBtn").on("click", function () {
     //get nearby values.
     console.log(this);
-    var text = $(this).siblings(".description").val(); // taken the change from the sibling html description attribute
-    var time = $(this).parent().attr("id"); // taken the change from the parent html id attribute
-    //set items in local storage.
+    // takes the change from the sibling html description attribute
+    var text = $(this).siblings(".description").val(); 
+    // takes the change from the parent html id attribute
+    var time = $(this).parent().attr("id");
+    //sets items in local storage.
     localStorage.setItem(time, text);
 })
 
-
+// Grabs items from local storage for appropriate time block
 $("#10am .description").val(localStorage.getItem("10am"));
 $("#11am .description").val(localStorage.getItem("11am"));
 $("#12pm .description").val(localStorage.getItem("12pm"));
@@ -100,18 +62,16 @@ $("#3pm .description").val(localStorage.getItem("3pm"));
 $("#4pm .description").val(localStorage.getItem("4pm"));
 $("#5pm .description").val(localStorage.getItem("5pm"));
 
-
-
+// Assigns noteInput to the jQuery description class
 var noteInput = $(".description");
 
-
-
+// Checks if the time property of the appropriate time block is lesser than, equal to, or greater than the current time and assigns new ids and classes for style sheet reference
 timeBlocks.forEach(function(thisHour) {
 if (thisHour.time < moment().format("HH")) {
-    noteInput.attr ({"class": "description before"})
+    $("#"+thisHour.id + " " + ".description").attr ({"class": "col-md-10 description before"})
 } else if (thisHour.time === moment().format("HH")) {
-    noteInput.attr({"class": "description during"})
+    $("#"+thisHour.id + " " + ".description").attr({"class": "col-md-10 description during"})
 } else if (thisHour.time > moment().format("HH")) {
-    noteInput.attr({"class": "description after"})
+    $("#"+thisHour.id  + " " + ".description").attr({"class": "col-md-10 description after"})
 }
 })

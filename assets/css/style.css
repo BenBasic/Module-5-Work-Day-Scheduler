@@ -1,7 +1,15 @@
+:root {
+--border: 5px solid rgb(80, 69, 119);
+--radius: 10px;
+--white: white;
+
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
+  background-color: rgb(142, 126, 202);
 }
 
 textarea{
@@ -15,54 +23,51 @@ textarea{
 
 .jumbotron {
   text-align: center;
-  background-color: transparent;
-  color: black;
+  background-color: rgb(100, 90, 138);
+  color: var(--white);
   border-radius: 0;
-  border-bottom: 10px solid black;
+  border-bottom: 10px solid rgb(80, 69, 119);
+}
+
+.display-3 {
+  background-color: rgb(71, 140, 213);
+  border: var(--border);
+  border-radius: var(--radius);
+  color: var(--white);
+}
+
+#currentDay {
+  display:inline;
+  border-bottom: 2px solid rgb(80, 69, 119);
 }
 
 .description{
   white-space: pre-wrap;
+  border-radius: var(--radius);
+  border: var(--border);
 }
 
 .time-block{
   text-align: center;
-  border-radius: 15px;
 }
 
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white;;
 }
 
 .hour {
-  background-color: #ffffff;
   color: #000000;
-  border-top: 1px dashed #000000;
-}
-
-.past {
-  background-color: #d3d3d3;
-  color: white;
-}
-
-.present {
-  background-color: #ff6961;
-  color: white;
-}
-
-.future {
-  background-color: #77dd77;
-  color: white;
+  border: var(--border);
+  border-radius: var(--radius);
+  background-color:rgb(203, 196, 228)
 }
 
 .saveBtn {
-  border-left: 1px solid black;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background-color: #06AED5;
-  color: white;
+  border: var(--border);
+  border-radius: var(--radius);
+  background-color: rgb(112, 170, 231);
+  color: var(--white);
 }
 
 .saveBtn i:hover {
@@ -71,13 +76,16 @@ textarea{
 }
 
 .before {
-  background-color: red;
+  background-color: rgb(100, 90, 138);
+  color: var(--white);
 }
 
 .during {
-  background-color: yellow;
+  background-color: rgb(71, 140, 213);
+  color: var(--white);
 }
 
 .after {
-  background-color: blue;
+  background-color: rgb(186, 112, 174);
+  color: var(--white);
 }
